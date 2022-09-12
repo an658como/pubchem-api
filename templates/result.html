@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block main %}
-  {% for task in tasks %}
+  {% for task in tasks.keys() %}
     <div class="card">
-        <h3>{{ task }}</h3>
+        <h3>{{ task }}:    {{ tasks.get(task) }}</h3>
     </div>
   {% endfor %}
 {% endblock %}

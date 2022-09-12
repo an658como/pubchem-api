@@ -27,13 +27,13 @@ def index():
 
     # Query the Task class for the stored information and print them on the index page
 
-    return render_template('index.html', tasks=['task 1', 'task 2'])
+    return render_template('index.html')
 
 # routes are set to be compatible with GET by default. In case you need
 # to includee POST, you should consider it in the route definition
 # the actions must be provided in a list that is called methods
-@app.route('/inchi', methods=['GET', 'POST'])
-def inchi():
+@app.route('/search', methods=['GET', 'POST'])
+def search():
     form = forms.AddTaskForm()
     # now that the POST action is activated, we can have access to the forms data
     
@@ -48,7 +48,7 @@ def inchi():
         flash('The resutls from PubChem PUG API')
         # return to the index page after recieving data
         return render_template('result.html', tasks=result)
-    return render_template('inchi.html', form=form)
+    return render_template('search.html', form=form)
 
 
 

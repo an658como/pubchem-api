@@ -17,7 +17,7 @@ def pubchem_api(smiles: Optional[str] = None) -> Tuple[str,str]:
     # /<operation specification>
     operation_property = '/property/' # compound domain <operation specification> = record | <compound property> | synonyms | sids | cids | aids | assaysummary | classification | <xrefs> | description | conformers
     operation_cid = '/cids/'
-    property_tag = 'InChI/' # <compound property> = property / [comma-separated list of property tags]
+    property_tag = 'MolecularFormula,InChIKey,InChI,CanonicalSmiles,ExactMass,MolecularWeight,IsotopeAtomCount,IupacName,CovalentUnitCount,Tpsa/' # <compound property> = property / [comma-separated list of property tags]
     # /<output specification>
     output= 'JSON' # <output specification> = XML | ASNT | ASNB | JSON | JSONP [ ?callback=<callback name> ] | SDF | CSV | PNG | TXT
     InChI_link = pubchem_domain+input_domain+input_namespace+input_identifier+operation_property+property_tag+output
@@ -25,8 +25,7 @@ def pubchem_api(smiles: Optional[str] = None) -> Tuple[str,str]:
     
     inchi = requests.get(InChI_link)
     file = json.loads(inchi.text)
-    return (file['PropertyTable']['Properties'][0]['CID'],
-    file['PropertyTable']['Properties'][0]['InChI'])
+    return (file['PropertyTable']['Properties'][0])
 
 
 if __name__ == "__main__":

@@ -3,10 +3,10 @@
 {% block main %}
 
 <div class="container-fluid">
-    <form action="{{ url_for('inchi') }}" method="post">
+    <form action="{{ url_for('search') }}" method="post">
         {{ form.hidden_tag() }}
             <div class="row">
-                <h3> Add InChI </h3>
+                <h3> Enter Canonical SMILES: </h3>
                 <div class="col">
                     {{ form.title(class="form-control") }}
                 </div>
